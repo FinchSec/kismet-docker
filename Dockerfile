@@ -21,6 +21,7 @@ RUN tar -czf ../kismet.tar.gz *
 
 FROM debian:unstable-slim
 LABEL org.opencontainers.image.authors="thomas@finchsec.com"
+# hadolint ignore=DL3005,DL3008
 RUN apt-get update && \
     echo "force-unsafe-io" > /etc/dpkg/dpkg.cfg.d/force-unsafe-io && \
     apt-get dist-upgrade -y && \
