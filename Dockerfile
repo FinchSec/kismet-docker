@@ -1,4 +1,4 @@
-FROM debian:unstable as builder
+FROM finchsec/kali:base as builder
 # hadolint ignore=DL3005,DL3008,DL3015
 RUN apt-get update && \
     echo "force-unsafe-io" > /etc/dpkg/dpkg.cfg.d/force-unsafe-io && \
@@ -19,7 +19,7 @@ RUN ./configure --enable-bladerf --enable-btgeiger --enable-prelude && \
 WORKDIR /kismet-bin
 RUN tar -czf ../kismet.tar.gz ./*
 
-FROM debian:unstable-slim
+FROM finchsec/kali:base
 LABEL org.opencontainers.image.authors="thomas@finchsec.com"
 # hadolint ignore=DL3005,DL3008
 RUN apt-get update && \
