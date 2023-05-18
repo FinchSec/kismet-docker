@@ -13,7 +13,7 @@ RUN apt-get update && \
 RUN git clone https://github.com/kismetwireless/kismet
 WORKDIR /kismet
 RUN ./configure --enable-bladerf --enable-btgeiger --enable-prelude && \
-    make -j $(nproc) && \
+    make && \
     make suidinstall DESTDIR=/kismet-bin && \
     make forceconfigs DESTDIR=/kismet-bin
 WORKDIR /kismet-bin
