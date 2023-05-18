@@ -18,7 +18,6 @@ RUN ./configure --enable-bladerf --enable-btgeiger --enable-prelude && \
     make forceconfigs DESTDIR=/kismet-bin
 WORKDIR /kismet-bin
 RUN tar -czf ../kismet.tar.gz *
-## Try fpm and make a package, then install in second step
 
 FROM debian:unstable-slim
 LABEL org.opencontainers.image.authors="thomas@finchsec.com"
