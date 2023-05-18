@@ -17,7 +17,7 @@ RUN ./configure --enable-bladerf --enable-btgeiger --enable-prelude && \
     make suidinstall DESTDIR=/kismet-bin && \
     make forceconfigs DESTDIR=/kismet-bin
 WORKDIR /kismet-bin
-RUN tar -czf ../kismet.tar.gz *
+RUN tar -czf ../kismet.tar.gz ./*
 
 FROM debian:unstable-slim
 LABEL org.opencontainers.image.authors="thomas@finchsec.com"
