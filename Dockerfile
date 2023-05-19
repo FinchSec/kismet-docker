@@ -12,8 +12,9 @@ RUN apt-get update && \
                     libbladerf-dev g++ libprelude-dev
 RUN git clone https://github.com/kismetwireless/kismet
 WORKDIR /kismet
+# hadolint ignore=SC2046
 RUN ./configure --enable-bladerf --enable-btgeiger --enable-prelude && \
-    make && \
+    make -j $(nproc) && \
     make suidinstall DESTDIR=/kismet-bin && \
     make forceconfigs DESTDIR=/kismet-bin
 WORKDIR /kismet-bin
