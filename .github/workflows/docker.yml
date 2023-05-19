@@ -19,6 +19,9 @@ on:
       - '.github/workflows/README.yml'
       - 'LICENSE'
 
+env:
+  REGISTRY_IMAGE: finchsec/kismet
+
 jobs:
   lint:
     runs-on: ubuntu-22.04
