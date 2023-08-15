@@ -28,7 +28,7 @@ RUN apt-get update && \
     apt-get dist-upgrade -y && \
     apt-get install -y --no-install-recommends libc6 libmicrohttpd12 zlib1g libnl-3-200 libnl-genl-3-200 \
                     libpcap0.8 libcap2 libnm0 libdw1 libsqlite3-0 libprotobuf-c1 libsensors5 python3 \
-                    python3-setuptools python3-protobuf libwebsockets17 python3-usb python3-numpy \
+                    python3-setuptools python3-protobuf libwebsockets19 python3-usb python3-numpy \
                     python3-pip python3-serial librtlsdr0 libusb-1.0-0 rtl-433 openssl libubertooth1 \
                     libbtbb1 libbladerf2 bladerf libpreludecpp12 man-db && \
     apt-get autoclean && \
