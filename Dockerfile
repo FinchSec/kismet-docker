@@ -13,7 +13,7 @@ RUN apt-get update && \
 RUN git clone https://github.com/kismetwireless/kismet
 WORKDIR /kismet
 # hadolint ignore=SC2046
-RUN ./configure --enable-bladerf --enable-btgeiger --enable-prelude && \
+RUN ./configure $([ "$(dpkg --print-architecture)" != "riscv64" ] && echo --enable-bladerf) --enable-btgeiger --enable-prelude && \
     make -j $(nproc) && \
     make suidinstall DESTDIR=/kismet-bin && \
     make forceconfigs DESTDIR=/kismet-bin
