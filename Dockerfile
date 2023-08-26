@@ -6,7 +6,7 @@ RUN apt-get update && \
     apt-get install -y --no-install-recommends ca-certificates git gcc make libc6-dev libmicrohttpd-dev \
                     pkg-config zlib1g-dev libnl-3-dev libnl-genl-3-dev libcap-dev libpcap-dev libnm-dev \
                     libdw-dev libsqlite3-dev libprotobuf-dev libprotobuf-c-dev protobuf-compiler \
-                    protobuf-c-compiler libsensors4-dev python3 python3-setuptools python3-protobuf \
+                    protobuf-c-compiler libsensors-dev python3 python3-setuptools python3-protobuf \
                     python3-usb python3-numpy python3-dev python3-pip python3-serial librtlsdr0 libmosquitto-dev \
                     libusb-1.0-0-dev rtl-433 libssl-dev libwebsockets-dev libbtbb-dev g++ libprelude-dev \
                     $([ "$(dpkg --print-architecture)" != "riscv64" ] && echo libubertooth-dev) libbladerf-dev
