@@ -36,6 +36,8 @@ RUN apt-get update && \
 COPY --from=builder /kismet.tar.gz /
 RUN tar -zxf kismet.tar.gz && \
     rm kismet.tar.gz
+# Workaround so that kismet can load librtlsdr2
+RUN ln -s /usr/lib/x86_64-linux-gnu/librtlsdr.so.2 /usr/lib/x86_64-linux-gnu/librtlsdr.so.0
 EXPOSE 2501
 EXPOSE 3501
 CMD ["/usr/local/bin/kismet", "--no-ncurses-wrapper"]
