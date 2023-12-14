@@ -37,10 +37,9 @@ COPY --from=builder /kismet.tar.gz /
 RUN tar -zxf kismet.tar.gz && \
     rm kismet.tar.gz
 # Workaround so that kismet can load librtlsdr2
-# hadolint ignore=DL4006,SC2086
-RUN LIBRTLSDR2=$(ls -1 /usr/lib/*-linux-*/librtlsdr.so.2) && \
-    LIBRTLSDR0=$(ls -1 /usr/lib/*-linux-*/librtlsdr.so.2 | sed 's/so.2/so.0/') && \
-    ln -s ${LIBRTLSDR2} ${LIBRTLSDR0}
+# hadolint ignore=DL4006,SC2012
+RUN ln -s $(ls -1 /usr/lib/*-linux-*/librtlsdr.so.2) \
+        $(ls -1 /usr/lib/*-linux-*/librtlsdr.so.2 | sed 's/so.2/so.0/')
 EXPOSE 2501
 EXPOSE 3501
 CMD ["/usr/local/bin/kismet", "--no-ncurses-wrapper"]
