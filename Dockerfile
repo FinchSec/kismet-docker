@@ -36,10 +36,6 @@ RUN apt-get update && \
 COPY --from=builder /kismet.tar.gz /
 RUN tar -zxf kismet.tar.gz && \
     rm kismet.tar.gz
-# Workaround so that kismet can load librtlsdr2
-# hadolint ignore=DL4006,SC2012
-RUN ln -s $(ls -1 /usr/lib/*-linux-*/librtlsdr.so.2) \
-        $(ls -1 /usr/lib/*-linux-*/librtlsdr.so.2 | sed 's/so.2/so.0/')
 EXPOSE 2501
 EXPOSE 3501
 CMD ["/usr/local/bin/kismet", "--no-ncurses-wrapper"]
