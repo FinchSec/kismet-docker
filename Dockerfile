@@ -36,7 +36,9 @@ RUN apt-get update && \
 COPY --from=builder /kismet.tar.gz /
 RUN tar -zxf kismet.tar.gz && \
     rm kismet.tar.gz
+# Kismet
 EXPOSE 2501
 EXPOSE 3501
+# GPSd
 EXPOSE 2497
 CMD ["/usr/local/bin/kismet", "--no-ncurses-wrapper"]
