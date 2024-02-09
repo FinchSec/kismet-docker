@@ -28,7 +28,7 @@ RUN apt-get update && \
     apt-get dist-upgrade -y && \
     apt-get install -y --no-install-recommends libc6 libmicrohttpd12 zlib1g libnl-3-200 libnl-genl-3-200 libssl3 \
                     libpcap0.8 libcap2 libnm0 libdw1 libsqlite3-0 libprotobuf-c1 libsensors5 python3 man-db \
-                    python3-setuptools python3-protobuf libwebsockets19 python3-usb python3-numpy libbtbb1 \
+                    python3-setuptools python3-protobuf libwebsockets19 python3-usb python3-numpy libbtbb1 gpsd \
                     python3-pip python3-serial librtlsdr2 libusb-1.0-0 rtl-433 openssl libpreludecpp12 libmosquitto1 \
                     $([ "$(dpkg --print-architecture)" != "riscv64" ] && echo libubertooth1 ) libbladerf2 bladerf && \
     apt-get autoclean && \
@@ -38,4 +38,5 @@ RUN tar -zxf kismet.tar.gz && \
     rm kismet.tar.gz
 EXPOSE 2501
 EXPOSE 3501
+EXPOSE 2497
 CMD ["/usr/local/bin/kismet", "--no-ncurses-wrapper"]
