@@ -26,13 +26,11 @@ LABEL org.opencontainers.image.authors="thomas@finchsec.com"
 RUN apt-get update && \
     echo "force-unsafe-io" > /etc/dpkg/dpkg.cfg.d/force-unsafe-io && \
     apt-get dist-upgrade -y && \
-    apt-get install -y --no-install-recommends libc6 libmicrohttpd12 zlib1g libnl-3-200 libnl-genl-3-200 \
+    apt-get install -y --no-install-recommends libc6 libmicrohttpd12 zlib1g libnl-3-200 libnl-genl-3-200 libssl3t64 \
                     libpcap0.8 libcap2 libnm0 libdw1 libsqlite3-0 libprotobuf-c1 libsensors5 python3 man-db \
                     python3-setuptools python3-protobuf libwebsockets19 python3-usb python3-numpy libbtbb1 gpsd \
                     python3-pip python3-serial librtlsdr2 libusb-1.0-0 rtl-433 openssl libpreludecpp12 libmosquitto1 \
-                    $([ "$(dpkg --print-architecture)" != "riscv64" ] && echo libubertooth1 ) libbladerf2 bladerf \
-                    $([ "$(dpkg --print-architecture)" = "s390x" ] && echo libssl3) \
-                    $([ "$(dpkg --print-architecture)" != "s390x" ] && echo libssl3t64) && \
+                    $([ "$(dpkg --print-architecture)" != "riscv64" ] && echo libubertooth1 ) libbladerf2 bladerf && \
     apt-get autoclean && \
     rm -rf /var/lib/dpkg/status-old /etc/dpkg/dpkg.cfg.d/force-unsafe-io /var/lib/apt/lists/*
 COPY --from=builder /kismet.tar.gz /
