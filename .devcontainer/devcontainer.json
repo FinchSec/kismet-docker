@@ -1,0 +1,17 @@
+{
+    "name": "Docker Buildx",
+    "dockerFile": "Dockerfile",
+    "extensions": [
+      "ms-azuretools.vscode-docker"
+    ],
+    "remoteUser": "vscode",
+    // Privileged is needed as we use docker in there
+    // TODO: Next step is make it rootless
+    "privileged": true,
+    "workspaceFolder": "/workspace",
+    "mounts": [
+      "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached"
+    ],
+    "postStartCommand": "/opt/postStartCommand.sh"
+  }
+  

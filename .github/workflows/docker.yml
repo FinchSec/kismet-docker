@@ -9,6 +9,8 @@ on:
       - 'README.md'
       - '.github/workflows/README.yml'
       - 'LICENSE'
+      - '.devcontainer/*'
+      - '.github/workflows/devcontainer.yml'
   schedule:
     - cron: '30 3 * * *'
   workflow_dispatch:
@@ -19,6 +21,8 @@ on:
       - 'README.md'
       - '.github/workflows/README.yml'
       - 'LICENSE'
+      - '.devcontainer/*'
+      - '.github/workflows/devcontainer.yml'
 
 env:
   REGISTRY_IMAGE: finchsec/kismet
