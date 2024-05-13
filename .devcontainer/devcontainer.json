@@ -1,17 +1,33 @@
 {
-    "name": "Docker Buildx",
-    "dockerFile": "Dockerfile",
-    "extensions": [
-      "ms-azuretools.vscode-docker"
-    ],
-    "remoteUser": "vscode",
-    // Privileged is needed as we use docker in there
-    // TODO: Next step is make it rootless
-    "privileged": true,
-    "workspaceFolder": "/workspace",
-    "mounts": [
-      "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached"
-    ],
-    "postStartCommand": "/opt/postStartCommand.sh"
-  }
-  
+  "name": "docker-in-docker",
+  "dockerFile": "Dockerfile",
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "bash",
+        "terminal.integrated.profiles.linux": {
+          "bash": {
+            "path": "/bin/bash"
+          },
+          "zsh": {
+            "path": "/usr/bin/zsh"
+          }
+        }
+      },
+      "extensions": [
+        "ms-vscode-remote.remote-containers",
+        "ms-azuretools.vscode-docker"
+      ]
+    }
+  },
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {
+      "version": "latest"
+    }
+  },
+  "remoteUser": "vscode",
+  "workspaceFolder": "/workspace",
+  "mounts": [
+    "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached"
+  ]
+}

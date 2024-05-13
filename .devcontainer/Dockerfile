@@ -1,15 +1,16 @@
-FROM docker:26-dind as base
+FROM ubuntu:22.04
 
-RUN apk add --update --no-cache shadow curl
+# Allow to build/run cross-platform containers
+RUN apt-get update && \
+    apt-get dist-upgrade -y && \
+    apt-get install binfmt-support -y --no-install-recommends && \
+    rm -rf /var/lib/apt/lists/*
 
-RUN useradd -m vscode && \
-    usermod -aG docker vscode
+# Add zsh
+RUN apt-get update && \
+    apt-get dist-upgrade -y && \
+    apt-get install zsh -y && \
+    rm -rf /var/lib/apt/lists/*
 
-RUN curl -fsSL https://raw.githubusercontent.com/microsoft/vscode-dev-containers/main/script-library/common-alpine.sh > script.sh && \
-    chmod +x script.sh && \
-    sed -i 's/libssl1.1/libssl3/' script.sh && \
-    ./script.sh && \
-    rm script.sh
-
-COPY postStartCommand.sh /opt
-RUN chmod +x /opt/postStartCommand.sh
+# Add vscode user
+RUN useradd -m vscode
