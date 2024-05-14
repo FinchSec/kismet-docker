@@ -8,7 +8,7 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 # Add zsh
-# hadolint ignore=DL3005,DL3008
+# hadolint ignore=DL3005,DL3008,DL3015
 RUN apt-get update && \
     apt-get dist-upgrade -y && \
     apt-get install zsh -y && \
